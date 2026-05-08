@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
 
 {% load static %}
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Login</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
-<body>
+<body class="bg-gray-100">
 
 <div class="min-h-screen flex items-center justify-center p-4">
 
-<div class="w-full max-w-4xl bg-white border-2 border-black flex flex-col md:flex-row overflow-hidden">
+<div class="w-full max-w-4xl bg-white border-2 border-black flex flex-col md:flex-row overflow-hidden shadow-xl">
+
+<!-- LADO IZQUIERDO -->
 
 <div class="md:w-1/2 bg-gray-100 p-12 flex flex-col items-center justify-center border-b-2 md:border-b-0 md:border-r-2 border-black">
 
-<div>
+<div class="mb-8">
   <span class="font-bold text-8xl text-gray-500">VAK</span>
 </div>
 
@@ -30,10 +33,12 @@ Aprende a tu manera
 </h2>
 
 <p class="text-center text-sm text-gray-600 max-w-xs">
-Plataforma adaptativa para el aprendizaje visual, auditivio o kinestésico.
+Plataforma adaptativa para el aprendizaje visual, auditivo o kinestésico.
 </p>
 
 </div>
+
+<!-- LADO DERECHO -->
 
 <div class="md:w-1/2 p-12 flex flex-col justify-center bg-white">
 
@@ -41,53 +46,73 @@ Plataforma adaptativa para el aprendizaje visual, auditivio o kinestésico.
 Iniciar Sesión
 </h1>
 
-<div class="space-y-6">
+<!-- MENSAJES -->
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="mb-4 p-4 border-2 border-red-500 bg-red-100 text-red-700 text-sm">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+<!-- FORMULARIO -->
+
+<form method="POST" class="space-y-6">
+
+{% csrf_token %}
 
 <div class="space-y-2">
 
 <label class="text-xs font-bold uppercase tracking-wider">
-Usuario / Correo
+Usuario
 </label>
 
 <input
 type="text"
+name="username"
 class="w-full h-12 border-2 border-black px-4 bg-gray-50"
 placeholder="Usuario"
+required
 >
 
 </div>
 
 <div class="space-y-2">
-
-<div class="flex justify-between">
 
 <label class="text-xs font-bold uppercase tracking-wider">
 Contraseña
 </label>
 
-</div>
-
 <input
 type="password"
+name="password"
 class="w-full h-12 border-2 border-black px-4 bg-gray-50"
 placeholder="••••••••"
+required
 >
 
 </div>
 
 <button
-onclick="onLogin()"
-class="w-full h-14 bg-black text-white font-bold border-2 border-black text-lg hover:bg-gray-800"
+type="submit"
+class="w-full h-14 bg-black text-white font-bold border-2 border-black text-lg hover:bg-gray-800 transition"
 >
 INICIAR SESIÓN
 </button>
 
-<div class="pt-6 text-center border-t-2 border-dashed border-gray-200">
+</form>
+
+<div class="pt-6 mt-6 text-center border-t-2 border-dashed border-gray-200">
 
 <p class="text-sm">
 ¿No tienes una cuenta?
 
-<button onclick="onStartQuiz()" class="font-bold underline hover:text-blue-600">
+<button class="font-bold underline hover:text-blue-600">
 Regístrate y descubre tu estilo
 </button>
 
@@ -101,9 +126,6 @@ Regístrate y descubre tu estilo
 
 </div>
 
-</div>
-
-<script src="{% static 'js/login.js' %}"></script>
-
 </body>
+
 </html>
