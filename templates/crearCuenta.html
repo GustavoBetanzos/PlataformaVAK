@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Cuenta</title>
+
+  {% load static %}
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
+
+  <!-- Card principal -->
+  <div class="w-full max-w-xl bg-gray-100 border-2 border-black p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+
+    <!-- Título -->
+    <h1 class="text-4xl font-black uppercase mb-8">
+      Crear Cuenta
+    </h1>
+
+    <!-- Formulario -->
+    <form method="POST" class="space-y-5">
+
+      {% csrf_token %}
+
+      <!-- Usuario -->
+      <div class="space-y-1">
+        <label class="block text-lg font-bold uppercase">
+          Usuario
+        </label>
+
+        <input
+          type="text"
+          name="username"
+          placeholder="Usuario"
+          required
+          class="w-full h-11 px-4 rounded-md border border-gray-300 bg-white shadow-md outline-none focus:ring-2 focus:ring-black text-base"
+        >
+      </div>
+
+      <!-- Correo -->
+      <div class="space-y-1">
+        <label class="block text-lg font-bold uppercase">
+          Correo
+        </label>
+
+        <input
+          type="email"
+          name="email"
+          placeholder="correo@ejemplo.com"
+          required
+          class="w-full h-11 px-4 rounded-md border border-gray-300 bg-white shadow-md outline-none focus:ring-2 focus:ring-black text-base"
+        >
+      </div>
+
+      <!-- Contraseña -->
+      <div class="space-y-1">
+        <label class="block text-lg font-bold uppercase">
+          Contraseña
+        </label>
+
+        <input
+          type="password"
+          name="password1"
+          placeholder="Contraseña"
+          required
+          class="w-full h-11 px-4 rounded-md border border-gray-300 bg-white shadow-md outline-none focus:ring-2 focus:ring-black text-base"
+        >
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div class="space-y-1">
+        <label class="block text-lg font-bold uppercase">
+          Confirmar Contraseña
+        </label>
+
+        <input
+          type="password"
+          name="password2"
+          placeholder="Confirmar contraseña"
+          required
+          class="w-full h-11 px-4 rounded-md border border-gray-300 bg-white shadow-md outline-none focus:ring-2 focus:ring-black text-base"
+        >
+      </div>
+
+      <!-- Botón -->
+      <div class="pt-2">
+        <button
+          type="submit"
+          class="w-full h-11 bg-gray-800 text-white rounded-md text-base font-medium hover:bg-black transition"
+        >
+          Guardar y tomar test
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+
+</html>
